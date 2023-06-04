@@ -27,7 +27,7 @@
 
 #include "enrol.h"
 #include "fingerprint.h"
-
+/*
 // Icon of Fingerprint
 #define LOGO_HEIGHT   64
 #define LOGO_WIDTH    128
@@ -98,7 +98,7 @@ static const unsigned char PROGMEM logo_bmp[] =
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
-
+*/
 
 
 void setup()
@@ -107,13 +107,13 @@ void setup()
 
   pinMode(Relay, OUTPUT);
   digitalWrite(buzzer, LOW);
-
+/*
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
     Serial.println(F("SSD1306 allocation failed"));
     for (;;); // Don't proceed, loop forever
   }
-
+*/
   initWifi();
 
   digitalWrite(buzzer, LOW);
@@ -136,7 +136,7 @@ void loop() {
     {
       Serial.println("A");
       Serial.println("Maze Lock Mode");
-      display.clearDisplay();
+  /*    display.clearDisplay();
       display.setTextSize(2);             // Normal 1:1 pixel scale
       display.setTextColor(SSD1306_WHITE);        // Draw white text
       display.setCursor(10, 0);            // Start at top-left corner
@@ -147,7 +147,7 @@ void loop() {
       beep(200);
       beep(200);
       delay(1000);
-
+*/
       Serial.println("Enter the \nFour Digit \nCode");
 
       fingerprint_flag = 0;
@@ -161,7 +161,7 @@ void loop() {
       {
         Serial.println("D");
         Serial.println("Enrollment mode");
-        display.clearDisplay();
+  /*      display.clearDisplay();
         display.setTextSize(2);             // Normal 1:1 pixel scale
         display.setTextColor(SSD1306_WHITE);        // Draw white text
         display.setCursor(0, 0);            // Start at top-left corner
@@ -172,13 +172,14 @@ void loop() {
         beep(200);
         beep(200);
         delay(1000);
+*/
         Serial.println("Enter ID");
-        display.clearDisplay();
+    /*    display.clearDisplay();
         display.setTextSize(2);             // Normal 1:1 pixel scale
         display.setTextColor(SSD1306_WHITE);        // Draw white text
         display.setCursor(35, 20);            // Start at top-left corner
         display.println(("ID XXX"));
-        display.display();
+        display.display(); */
         ID_e = "";
         i = 0;
         fingerprint_flag = 2;
@@ -189,10 +190,11 @@ void loop() {
       else
       {
         Serial.println("Wrong Code");
-        display.clearDisplay();
+       /* display.clearDisplay();
         display.setTextSize(2);             // Normal 1:1 pixel scale
         display.setTextColor(SSD1306_WHITE);        // Draw white text
         display.setCursor(0, 20);            // Start at top-left corner
+*/
         display.println(("Wrong Code"));
         display.display();
         beep(200);
@@ -209,9 +211,9 @@ void loop() {
     delay(50);
     setup_f();
     loop_f();
-    display.clearDisplay();
+   /* display.clearDisplay();
     display.drawBitmap(0, 0, logo_bmp, LOGO_WIDTH, LOGO_HEIGHT, 1);
-    display.display();
+    display.display(); */
     customKey = customKeypad.getKey();
     switch (customKey) {
       case 'C':
@@ -229,10 +231,10 @@ void loop() {
     if (Keypad_Input() == Secret_Code)
     {
       Serial.println("Correct Code");
-      display.clearDisplay();
+     /* display.clearDisplay();
       display.setTextSize(2);             // Normal 1:1 pixel scale
       display.setTextColor(SSD1306_WHITE);        // Draw white text
-      display.setCursor(0, 20);            // Start at top-left corner
+      display.setCursor(0, 20);            // Start at top-left corner */
       display.println(("Correct Code"));
       beep(1000);
       display.display();
